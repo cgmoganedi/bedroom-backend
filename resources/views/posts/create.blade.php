@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-8 offset-2">
                 <div class="row">
-                    <h1>Post A Photo</h1>
+                    <h3>Post A Photo For Your Followers</h3>
                 </div>
                 <div class="form-group row">
                     <label for="caption" class="col-md-4 col-form-label">Post Caption</label>
@@ -32,7 +32,7 @@
                     <label for="image" class="col-md-4 col-form-label">Post Photo</label>
                     <input type="file" class="form-control-file" name="image" id="image" >
                     @error('image')
-                            <strong>{{ $message }}</strong>
+                            <strong class="pt-2">{{ $message }}</strong>
                     @enderror
                 </div>
                 <div class="row pt-3 justify-content-end">

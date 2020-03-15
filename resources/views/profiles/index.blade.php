@@ -8,11 +8,21 @@
         </div>
         <div class="col-9 pt-5">
             <div class="d-flex justify-content-between align-items-baseline">
+
                 <h1>{{ $user->username }}</h1>
-                <a href="#">Add New Post</a>
+
+                @can('update', $user->profile)
+                    <a href="/post/create">Add New Post</a>
+                @endcan
+
             </div>
+
+            @can('update', $user->profile)
+                <a href="/profile/{{$user->id}}/edit">Edit Profile</a>
+            @endcan
+
             <div class="d-flex">
-                <div class="pr-4"><strong>153</strong> posts</div>
+                <div class="pr-4"><strong>{{ $user->posts->count() }}</strong> posts</div>
                 <div class="pr-4"><strong>23k</strong> followers</div>
                 <div class="pr-4"><strong>128</strong> following</div>
             </div>
@@ -27,17 +37,14 @@
             </div>
         </div>
     </div>
-    <div class="row pt-3">
-
-        <div class="col-4">
-            <img src="/uploads/challenger.jpg" class="w-100 h-100" style="border-radius: 10px;">
-        </div>
-        <div class="col-4">
-            <img src="/uploads/shelby.jpg" class="w-100 h-100" style="border-radius: 10px;">
-        </div>
-        <div class="col-4">
-            <img src="/uploads/challenger.jpg" class="w-100 h-100" style="border-radius: 10px;">
-        </div>
+    <div class="row pt-3 align-items-center">
+        @foreach ($user->posts as $post)
+            <div class="col-4 pb-4">
+                <a href="/post/{{ $post->id }}">
+                    <img src="/storage/{{ $post->image }}" class="w-100" style="border-radius: 10px;">
+                </a>
+            </div>
+        @endforeach
     </div>
 </div>
 @endsection
