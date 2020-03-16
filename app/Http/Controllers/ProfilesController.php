@@ -10,8 +10,12 @@ class ProfilesController extends Controller
 {
     public function index(User $user)
     {
+        $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
+
+        //dd($follows);
         return view('profiles.index', [
-            'user' => $user
+            'user' => $user,
+            'follows' => $follows
         ]);
     }
 
@@ -43,6 +47,7 @@ class ProfilesController extends Controller
                 ['image' => $imagePath]
             );
         }
+        //dd($profile);
         auth()->user()->profile->update($profile);
 
         return redirect("/profile/{$user->id}");
