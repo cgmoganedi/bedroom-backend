@@ -25,8 +25,8 @@
 
             <div class="d-flex mt-2">
                 <div class="pr-4"><strong>{{ $user->posts->count() }}</strong> posts</div>
-                <div class="pr-4"><strong>23k</strong> followers</div>
-                <div class="pr-4"><strong>128</strong> following</div>
+                <div class="pr-4"><strong>{{ $user->profile->followers->count() }}</strong> followers</div>
+                <div class="pr-4"><strong>{{ $user->following->count() }}</strong> following</div>
             </div>
             <div class="pt-2 font-weight-bold">
                 {{ $user->profile->title }}
