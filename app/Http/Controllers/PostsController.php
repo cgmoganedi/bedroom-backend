@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -12,9 +13,16 @@ class PostsController extends Controller
         $this->middleware('auth');
     }
 
+    public function index(){
+        $users = auth()->user()->following()->pluck('profiles.user_id');
+        $posts = Post::whereIn('user_id', $users)->with('user')->latest()->paginate(5);
+        return view('posts.index', ['posts' => $posts]);
+    }
+
     public function create(){
         return view('posts.create');
     }
+
     public function store(){
         $post = request()->validate([
             'caption' => 'required|string|max:200',
