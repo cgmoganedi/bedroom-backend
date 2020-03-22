@@ -35,7 +35,7 @@
                 {{ $user->profile->profile_description ?? 'They like to walk on concrete. Would you question can I swim if you saw me walking on water.'}}
             </div>
             <div class="pt-1 font-weight-bold">
-                <a href="http://www.google.co.za/" target="_bank">{{ $user->profile->website_url }}</a>
+                <a href="{{ $user->profile->website_url }}" target="_bank">{{ $user->profile->website_url }}</a>
             </div>
         </div>
     </div>
@@ -50,4 +50,3 @@
     </div>
 </div>
 @endsection
-r

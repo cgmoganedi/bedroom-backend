@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-8 offset-2">
                 <a href="/profile/{{ $post->user->id }}">
-                    <img src="/storage/{{ $post->image }}" class="w-100">
+                    <img src="/storage/{{ $post->image }}" class="w-100"  style="border-radius: 10px;">
                 </a>
             </div>
         </div>
